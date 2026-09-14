@@ -1,0 +1,17 @@
+services:
+  client:
+    image: anishtandukar/docker:client
+    ports:
+      - "4173:4173"
+    depends_on:
+      - server
+    restart: unless-stopped
+
+  server:
+    image: anishtandukar/docker:server
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
